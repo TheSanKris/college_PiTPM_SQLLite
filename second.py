@@ -4,7 +4,7 @@ from sqlite3 import Error
 def connect (name):
 
     try:
-        connect = sqlite3.connect("{name}.db")
+        connect = sqlite3.connect(f"{name}.db")
 
         print("Соединение установлено: база данных создана в памяти")
 
@@ -17,16 +17,16 @@ def connect (name):
 def create_table(name, connect):
 
     cursor = connect.cursor()
-    cursor.execute("CREATE TABLE {name}(id integer PRIMARY KEY, name text)")
+    cursor.execute(f"CREATE TABLE {name}(id integer PRIMARY KEY, name text)")
     connect.commit()
-    print("Таблица {name} успешно создана!")
+    print(f"Таблица {name} успешно создана!")
 
 def insert(value, table, connect):
 
     cursor = connect.cursor()
-    cursor.execute("INSERT INTO {table} VALUES({value})")
+    cursor.execute(f"INSERT INTO {table} VALUES({value})")
     connect.commit()
-    print("Таблица {name} успешно создана!")
+    print(f"Значение {value} успешно добавлено в таблицу {table}!")
 
 def disconnect(connect):
 
